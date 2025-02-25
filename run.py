@@ -4,7 +4,7 @@ from logs.logging_setup import setup_logging
 from app.handler.alive import AliveHandler
 from app.handler.read_tpv import TpvHandler
 from app.handler.home import MainHandler
-from app.handler.transactionsbydata import TransactionsByDataHandler
+from app.handler.transactions_by_data import TransactionsByDataHandler
 
 PORT = 8888
 
