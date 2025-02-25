@@ -15,6 +15,7 @@ def make_app():
         (r"/", MainHandler),
         (r"/alive", AliveHandler),
         (r"/read_tpv", TpvHandler),
+        (r"/transactions_by_data", TransactionsByDataHandler),
     ])
 
 if __name__ == "__main__":
