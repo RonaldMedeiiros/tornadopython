@@ -12,6 +12,8 @@ class AliveHandler(tornado.web.RequestHandler):
         try:
             self.set_status(200)
             self.write({"status": "OK"})
+            
+            self.finish()
         except Exception as e:
             logger.error(f"Erro ao responder à requisição: {e}")
             self.set_status(500)

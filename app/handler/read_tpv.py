@@ -13,6 +13,8 @@ class TpvHandler(tornado.web.RequestHandler):
             self.set_status(200)
             logger.info(f"TPV calculado: {response}")
             self.write(response)
+            
+            self.finish()
         except Exception as e:
             logger.error(f"Erro ao calcular TPV: {e}")
             self.set_status(500)

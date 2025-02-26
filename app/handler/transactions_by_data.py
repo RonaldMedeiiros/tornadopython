@@ -58,6 +58,9 @@ class TransactionsByDataHandler(tornado.web.RequestHandler):
             logger.info("Resposta enviada com sucesso.")
 
             self.write(response)
+            
+            self.finish()
+            
         except Exception as e:
             logger.error(f"Erro ao processar a requisição: {e}")
             self.set_status(500)
