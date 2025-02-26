@@ -8,10 +8,14 @@ logger = setup_logging("TransactionsByDataHandler", "logs/transactions_by_data.l
 class TransactionsByDataHandler(tornado.web.RequestHandler):
     async def get(self):
         try:
+            logger.info("Iniciando processamento da requisição.")
+            
             initial_datetime = self.get_argument('initial_datetime')
             final_datetime = self.get_argument('final_datetime')
             page = int(self.get_argument('page'))
             per_page = int(self.get_argument('per_page'))
+            
+            logger.info(f"Parâmetros recebidos - initial_datetime: {initial_datetime}, final_datetime: {final_datetime}, page: {page}, per_page: {per_page}")
 
             initial_datetime = datetime.strptime(initial_datetime, '%d/%m/%Y %H:%M:%S')
             final_datetime = datetime.strptime(final_datetime, '%d/%m/%Y %H:%M:%S')
@@ -41,6 +45,8 @@ class TransactionsByDataHandler(tornado.web.RequestHandler):
                 }
             })
             total_pages = (total_items // per_page) + 1
+            
+            logger.info(f"Total de itens: {total_items}, Total de páginas: {total_pages}")
 
             response = {
                 'data': data,
@@ -48,6 +54,8 @@ class TransactionsByDataHandler(tornado.web.RequestHandler):
                 'total_pages': total_pages,
                 'total_items': total_items
             }
+            
+            logger.info("Resposta enviada com sucesso.")
 
             self.write(response)
         except Exception as e:
