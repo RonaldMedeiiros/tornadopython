@@ -3,7 +3,6 @@ from datetime import datetime
 from logs.logging_setup import setup_logging
 from db_connection import transactions_collection
 
-# Configuração de logging
 logger = setup_logging("TransactionsByDataHandler", "logs/transactions_by_data.log")
 
 class TransactionsByDataHandler(tornado.web.RequestHandler):
